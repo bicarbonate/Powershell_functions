@@ -1,0 +1,11 @@
+Function Connect-EXOnline{
+ 
+$credentials = Get-Credential -Credential email@domain.com
+Write-Output "Connecting to ExchangeOnline"
+ 
+$Session = New-PSSession -ConnectionUri https://outlook.office365.com/powershell-liveid/ `
+-ConfigurationName Microsoft.Exchange -Credential $credentials `
+-Authentication Basic -AllowRedirection
+Import-PSSession $Session
+ 
+}
